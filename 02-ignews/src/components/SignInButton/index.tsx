@@ -6,16 +6,18 @@ import { FiX } from 'react-icons/fi';
 export function SignInButton() {
   const isUserLoggedIn = false;
 
-  return isUserLoggedIn ? (
+  const renderLoggedInButton = () => (
     <button 
-    type="button"
-    className={styles.btn}
+      type="button"
+      className={styles.btn}
     >
       <FaGithub color="#04d361" />
       Camila Satie
       <FiX color="#737380" className={styles.closeIcon} /> 
     </button>
-  ) : (
+  );
+
+  const renderSignedInButton = () => (
     <button 
       type="button"
       className={styles.btn}
@@ -24,4 +26,10 @@ export function SignInButton() {
       Sign in with Github
     </button>
   );
+
+  return (
+    <>
+      {isUserLoggedIn ? renderLoggedInButton : renderSignedInButton}
+    </>
+  )
 }
