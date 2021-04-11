@@ -8,8 +8,6 @@ import { FiX } from 'react-icons/fi';
 export function SignInButton() {
   const [session] = useSession();
 
-  console.log(session)
-
   const renderLoggedInButton = () => (
     <button 
       type="button"
