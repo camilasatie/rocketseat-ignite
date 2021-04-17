@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
   const { slug } = params;
 
   // checar se tem inscrição
-  if (!session.activeSubscription) {
+  if (!session?.activeSubscription) {
     return {
       redirect: {
         destination: `/`,
@@ -67,11 +67,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
       month: 'long',
       year: 'numeric'
     })
-  }
+  };
 
   return {
     props: {
-      post
-    }
+      post,
+    },
   }
 }
