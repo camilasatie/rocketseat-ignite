@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getSession, useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import { RichText } from "prismic-dom";
 
 import { getPrismicClient } from "../../../services/prismic";
@@ -24,11 +24,11 @@ export default function PostsPreview({ post }: PostsPreviewProps) {
   const router = useRouter();
   const contentClass = [styles.content, styles.contentPreview];
 
-  useEffect(()=>{
+  useEffect(() => {
     if (session?.activeSubscription) {
-      router.push(`/posts/$post.slug`)
+      router.push(`/posts/${post.slug}`);
     }
-  },[session])
+  }, [session]);
 
   return (
     <>
