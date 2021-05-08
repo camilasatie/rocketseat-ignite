@@ -17,6 +17,23 @@ export function Pagination({
   onPageChange
 }: PaginationProps) {
   const lastPage =  Math.floor(totalCountOfRegisters / registersPerPage);
+
+  function generatePagesArray(from: number, to: number) {
+    return [new Array(to - from)]
+      .map((_, index) => {
+        return from + index + 1;
+      })
+      .filter(page => page > 0)
+  }
+
+  const previousPage = currentPage > 1
+  ? generatePagesArray(currentPage - 1 - SIBLINGS_COUNT, currentPage - 1)
+  : []
+
+  const nextPage = currentPage > 1
+  ? generatePagesArray(currentPage - 1 - SIBLINGS_COUNT, currentPage - 1)
+  : []
+
   return (
     <Stack
       direction={['column', 'row']}
