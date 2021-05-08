@@ -7,13 +7,12 @@ import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext';
 
 import { theme } from '../styles/theme';
 import { makeServer } from '../services/mirage';
+import { queryClient } from '../services/queryClient';
 
 // Inicializar o Mirage
 if (process.env.NODE_ENV === 'development') {
   makeServer();
 }
-
-const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
